@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>BeerInvntoryBootstrap.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">mssc-beer-inventory-service</a> &gt; <a href="index.source.html" class="el_package">guru.sfg.beer.inventory.service.bootstrap</a> &gt; <span class="el_source">BeerInvntoryBootstrap.java</span></div><h1>BeerInvntoryBootstrap.java</h1><pre class="source lang-java linenums">package guru.sfg.beer.inventory.service.bootstrap;
+
+import guru.sfg.beer.inventory.service.domain.BeerInventory;
+import guru.sfg.beer.inventory.service.repositories.BeerInventoryRepository;
+import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.boot.CommandLineRunner;
+import org.springframework.stereotype.Component;
+
+import java.util.UUID;
+
+/**
+ * Created by jt on 2019-06-07.
+ */
+<span class="fc" id="L15">@Slf4j</span>
+<span class="fc" id="L16">@RequiredArgsConstructor</span>
+@Component
+public class BeerInvntoryBootstrap implements CommandLineRunner {
+    public static final String BEER_1_UPC = &quot;0631234200036&quot;;
+    public static final String BEER_2_UPC = &quot;0631234300019&quot;;
+    public static final String BEER_3_UPC = &quot;0083783375213&quot;;
+<span class="fc" id="L22">    public static final UUID BEER_1_UUID = UUID.fromString(&quot;0a818933-087d-47f2-ad83-2f986ed087eb&quot;);</span>
+<span class="fc" id="L23">    public static final UUID BEER_2_UUID = UUID.fromString(&quot;a712d914-61ea-4623-8bd0-32c0f6545bfd&quot;);</span>
+<span class="fc" id="L24">    public static final UUID BEER_3_UUID = UUID.fromString(&quot;026cc3c8-3a0c-4083-a05b-e908048c1b08&quot;);</span>
+
+    private final BeerInventoryRepository beerInventoryRepository;
+
+    @Override
+    public void run(String... args) throws Exception {
+<span class="pc bpc" id="L30" title="1 of 2 branches missed.">        if(beerInventoryRepository.count() == 0){</span>
+<span class="fc" id="L31">            loadInitialInv();</span>
+        }
+<span class="fc" id="L33">    }</span>
+
+    private void loadInitialInv() {
+<span class="fc" id="L36">        beerInventoryRepository.save(BeerInventory</span>
+<span class="fc" id="L37">                .builder()</span>
+<span class="fc" id="L38">                .beerId(BEER_1_UUID)</span>
+<span class="fc" id="L39">                .upc(BEER_1_UPC)</span>
+<span class="fc" id="L40">                .quantityOnHand(50)</span>
+<span class="fc" id="L41">                .build());</span>
+
+<span class="fc" id="L43">        beerInventoryRepository.save(BeerInventory</span>
+<span class="fc" id="L44">                .builder()</span>
+<span class="fc" id="L45">                .beerId(BEER_2_UUID)</span>
+<span class="fc" id="L46">                .upc(BEER_2_UPC)</span>
+<span class="fc" id="L47">                .quantityOnHand(50)</span>
+<span class="fc" id="L48">                .build());</span>
+
+<span class="fc" id="L50">        beerInventoryRepository.saveAndFlush(BeerInventory</span>
+<span class="fc" id="L51">                .builder()</span>
+<span class="fc" id="L52">                .beerId(BEER_3_UUID)</span>
+<span class="fc" id="L53">                .upc(BEER_3_UPC)</span>
+<span class="fc" id="L54">                .quantityOnHand(50)</span>
+<span class="fc" id="L55">                .build());</span>
+
+<span class="fc" id="L57">        log.debug(&quot;Loaded Inventory. Record count: &quot; + beerInventoryRepository.count());</span>
+<span class="fc" id="L58">    }</span>
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.3.201901230119</span></div></body></html>

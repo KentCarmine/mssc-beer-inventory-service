@@ -1,0 +1,11 @@
+GROUP,PACKAGE,CLASS,INSTRUCTION_MISSED,INSTRUCTION_COVERED,BRANCH_MISSED,BRANCH_COVERED,LINE_MISSED,LINE_COVERED,COMPLEXITY_MISSED,COMPLEXITY_COVERED,METHOD_MISSED,METHOD_COVERED
+mssc-beer-inventory-service,guru.sfg.beer.inventory.service.web.model,BeerInventoryDto.BeerInventoryDtoBuilder,54,0,0,0,1,0,8,0,8,0
+mssc-beer-inventory-service,guru.sfg.beer.inventory.service.web.model,BeerInventoryDto,257,0,46,0,9,0,40,0,17,0
+mssc-beer-inventory-service,guru.sfg.beer.inventory.service.domain,BaseEntity,32,21,2,0,5,8,9,3,8,3
+mssc-beer-inventory-service,guru.sfg.beer.inventory.service.domain,BeerInventory,21,31,0,0,3,8,6,3,6,3
+mssc-beer-inventory-service,guru.sfg.beer.inventory.service.domain,BeerInventory.BeerInventoryBuilder,36,36,0,0,0,1,5,5,5,5
+mssc-beer-inventory-service,guru.sfg.beer.inventory.service.web.controllers,BeerInventoryController,20,13,0,0,5,2,1,2,1,2
+mssc-beer-inventory-service,guru.sfg.beer.inventory.service.bootstrap,BeerInvntoryBootstrap,0,74,1,1,0,28,1,4,0,4
+mssc-beer-inventory-service,guru.sfg.beer.inventory.service.web.mappers,BeerInventoryMapperImpl,80,3,4,0,18,1,4,1,2,1
+mssc-beer-inventory-service,guru.sfg.beer.inventory.service.web.mappers,DateMapper,38,3,4,0,8,1,4,1,2,1
+mssc-beer-inventory-service,guru.sfg.beer.inventory.service,BeerInventoryApplication,5,3,0,0,2,1,1,1,1,1
