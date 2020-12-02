@@ -1,9 +1,0 @@
-D:\Documents\SpringProjects\SpringMicroservicesCourse\BreweryProject\MonolithDecomposition\mssc-beer-inventory-service\src\main\java\guru\sfg\beer\inventory\service\bootstrap\BeerInvntoryBootstrap.java
-D:\Documents\SpringProjects\SpringMicroservicesCourse\BreweryProject\MonolithDecomposition\mssc-beer-inventory-service\src\main\java\guru\sfg\beer\inventory\service\repositories\BeerInventoryRepository.java
-D:\Documents\SpringProjects\SpringMicroservicesCourse\BreweryProject\MonolithDecomposition\mssc-beer-inventory-service\src\main\java\guru\sfg\beer\inventory\service\web\mappers\BeerInventoryMapper.java
-D:\Documents\SpringProjects\SpringMicroservicesCourse\BreweryProject\MonolithDecomposition\mssc-beer-inventory-service\src\main\java\guru\sfg\beer\inventory\service\web\mappers\DateMapper.java
-D:\Documents\SpringProjects\SpringMicroservicesCourse\BreweryProject\MonolithDecomposition\mssc-beer-inventory-service\src\main\java\guru\sfg\beer\inventory\service\BeerInventoryApplication.java
-D:\Documents\SpringProjects\SpringMicroservicesCourse\BreweryProject\MonolithDecomposition\mssc-beer-inventory-service\src\main\java\guru\sfg\beer\inventory\service\domain\BaseEntity.java
-D:\Documents\SpringProjects\SpringMicroservicesCourse\BreweryProject\MonolithDecomposition\mssc-beer-inventory-service\src\main\java\guru\sfg\beer\inventory\service\web\controllers\BeerInventoryController.java
-D:\Documents\SpringProjects\SpringMicroservicesCourse\BreweryProject\MonolithDecomposition\mssc-beer-inventory-service\src\main\java\guru\sfg\beer\inventory\service\domain\BeerInventory.java
-D:\Documents\SpringProjects\SpringMicroservicesCourse\BreweryProject\MonolithDecomposition\mssc-beer-inventory-service\src\main\java\guru\sfg\beer\inventory\service\web\model\BeerInventoryDto.java
