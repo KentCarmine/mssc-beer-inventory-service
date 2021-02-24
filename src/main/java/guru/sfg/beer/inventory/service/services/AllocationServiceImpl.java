@@ -55,6 +55,10 @@ public class AllocationServiceImpl implements AllocationService {
     }
 
     private void allocateBeerOrderLine(BeerOrderLineDto beerOrderLineDto) {
+        System.out.println("#####: In allocateBeerOrderLine");
+        System.out.println("#####: UPC = " + beerOrderLineDto.getUpc());
+        System.out.println("#####: ID = " + beerOrderLineDto.getId());
+        System.out.println("#####: BeerId = " + beerOrderLineDto.getBeerId());
         List<BeerInventory> beerInventoryList = beerInventoryRepository.findAllByUpc(beerOrderLineDto.getUpc());
 
         beerInventoryList.forEach(beerInventory -> {

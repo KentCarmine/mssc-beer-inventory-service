@@ -15,8 +15,8 @@ import org.springframework.stereotype.Component;
 @Slf4j
 public class AllocationListener {
 
-    private AllocationService allocationService;
-    private JmsTemplate jmsTemplate;
+    private final AllocationService allocationService;
+    private final JmsTemplate jmsTemplate;
 
     @JmsListener(destination = JMSConfig.ALLOCATE_ORDER_QUEUE)
     public void listen(@Payload AllocateOrderRequest allocateOrderRequest) {
@@ -28,6 +28,8 @@ public class AllocationListener {
             builder.pendingInventory(!fullyAllocated);
             builder.allocationError(false);
         } catch (Exception e) {
+            System.out.println("#####: " + e.toString());
+            e.printStackTrace();
             log.error("Allocation failed for order id: " + allocateOrderRequest.getBeerOrderDto().getId());
             builder.allocationError(true);
         }
