@@ -25,13 +25,13 @@ public class AllocationServiceImpl implements AllocationService {
         AtomicInteger totalOrdered = new AtomicInteger();
         AtomicInteger totalAllocated = new AtomicInteger();
 
-        beerOrderDto.getBeerOrderLines().forEach(beerOrderLineDto -> {
-            if ((((beerOrderLineDto.getOrderQuantity() != null ? beerOrderLineDto.getOrderQuantity() : 0 )
-                - (beerOrderLineDto.getQuantityAllocated() != null ? beerOrderLineDto.getQuantityAllocated() : 0)) > 0)) {
-                allocateBeerOrderLine(beerOrderLineDto);
+        beerOrderDto.getBeerOrderLines().forEach(beerOrderLine -> {
+            if ((((beerOrderLine.getOrderQuantity() != null ? beerOrderLine.getOrderQuantity() : 0)
+                    - (beerOrderLine.getQuantityAllocated() != null ? beerOrderLine.getQuantityAllocated() : 0)) > 0)) {
+                allocateBeerOrderLine(beerOrderLine);
             }
-            totalOrdered.set(totalOrdered.get() + beerOrderLineDto.getOrderQuantity());
-            totalAllocated.set(totalAllocated.get() + (beerOrderLineDto.getQuantityAllocated() != null ? beerOrderLineDto.getQuantityAllocated() : 0));
+            totalOrdered.set(totalOrdered.get() + beerOrderLine.getOrderQuantity());
+            totalAllocated.set(totalAllocated.get() + (beerOrderLine.getQuantityAllocated() != null ? beerOrderLine.getQuantityAllocated() : 0));
         });
 
         log.debug("Total Ordered: " + totalOrdered.get() + ". Total Allocated: " + totalAllocated.get());
@@ -54,27 +54,27 @@ public class AllocationServiceImpl implements AllocationService {
         }
     }
 
-    private void allocateBeerOrderLine(BeerOrderLineDto beerOrderLineDto) {
-        System.out.println("#####: In allocateBeerOrderLine");
-        System.out.println("#####: UPC = " + beerOrderLineDto.getUpc());
-        System.out.println("#####: ID = " + beerOrderLineDto.getId());
-        System.out.println("#####: BeerId = " + beerOrderLineDto.getBeerId());
-        List<BeerInventory> beerInventoryList = beerInventoryRepository.findAllByUpc(beerOrderLineDto.getUpc());
+    private void allocateBeerOrderLine(BeerOrderLineDto beerOrderLine) {
+//        System.out.println("#####: In allocateBeerOrderLine");
+//        System.out.println("#####: UPC = " + beerOrderLine.getUpc());
+//        System.out.println("#####: ID = " + beerOrderLine.getId());
+//        System.out.println("#####: BeerId = " + beerOrderLine.getBeerId());
+        List<BeerInventory> beerInventoryList = beerInventoryRepository.findAllByUpc(beerOrderLine.getUpc());
 
         beerInventoryList.forEach(beerInventory -> {
             int inventory = (beerInventory.getQuantityOnHand() == null) ? 0 : beerInventory.getQuantityOnHand();
-            int orderQty = (beerOrderLineDto.getOrderQuantity() == null) ? 0 : beerOrderLineDto.getOrderQuantity();
-            int allocatedQty = (beerOrderLineDto.getQuantityAllocated() == null) ? 0 : beerOrderLineDto.getQuantityAllocated();
+            int orderQty = (beerOrderLine.getOrderQuantity() == null) ? 0 : beerOrderLine.getOrderQuantity();
+            int allocatedQty = (beerOrderLine.getQuantityAllocated() == null) ? 0 : beerOrderLine.getQuantityAllocated();
             int qtyToAllocate = orderQty - allocatedQty;
 
             if (inventory >= qtyToAllocate) { // allocate full order
                 inventory = inventory - qtyToAllocate;
-                beerOrderLineDto.setQuantityAllocated(orderQty);
+                beerOrderLine.setQuantityAllocated(orderQty);
                 beerInventory.setQuantityOnHand(inventory);
 
                 beerInventoryRepository.save(beerInventory);
             } else if (inventory > 0) { // only partial allocation
-                beerOrderLineDto.setQuantityAllocated(allocatedQty + inventory);
+                beerOrderLine.setQuantityAllocated(allocatedQty + inventory);
                 beerInventory.setQuantityOnHand(0);
 
                 beerInventoryRepository.delete(beerInventory);
