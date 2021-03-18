@@ -20,7 +20,12 @@
     <name>mssc-beer-inventory-service</name>
     <description>MSSC Beer Inventory Service</description>
 
-    <licenses>
+    <properties>
+        <maven.compiler.source>11</maven.compiler.source>
+        <maven.compiler.target>11</maven.compiler.target>
+    </properties>
+
+    <!--<licenses>
         <license>
             <name>GNU General Public License v3.0</name>
             <url>https://www.gnu.org/licenses/gpl.txt</url>
@@ -36,7 +41,7 @@
             <name>John Thompsons tarted, updated by Kent Carmine</name>
             <organization>Spring Framework Guru</organization>
         </developer>
-    </developers>
+    </developers>-->
 
     <dependencies>
         <dependency>
