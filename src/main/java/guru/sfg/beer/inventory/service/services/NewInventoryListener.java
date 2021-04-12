@@ -16,7 +16,7 @@ public class NewInventoryListener {
 
     private final BeerInventoryRepository beerInventoryRepository;
 
-//    @Transactional
+    //    @Transactional
     @JmsListener(destination = JMSConfig.NEW_INVENTORY_QUEUE)
     public void listen(NewInventoryEvent event) {
         log.debug("Got Inventory: " + event.toString());
